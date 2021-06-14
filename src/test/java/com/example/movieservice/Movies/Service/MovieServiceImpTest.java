@@ -95,17 +95,31 @@ class MovieServiceImpTest {
     }
 
     @Test
-    @Disabled
     void updateMovie() {
+        //given
+        int id = 20;
+        //given
+        String name = "Black Panther";
+        Movie movie = new Movie();
+        movie.id = 20;
+        movie.name = name;
+        movie.genre ="action";
+        movie.releasedOn = new Date();
+        movie.rating = 9;
+        given(movieRepositorytest.findById(id)).willReturn(Optional.of(movie));
+
+        //when
+        undertest.UpdateMovie(movie);
+
+        verify(movieRepositorytest,atLeastOnce()).save(movie);
+
+
+
     }
 
-    @Test
-    @Disabled
-    void getMovieByName() {
-    }
+
 
     @Test
-    @Disabled
     void canDeleteMovie() {
         //given
         int id = 20;
@@ -117,8 +131,12 @@ class MovieServiceImpTest {
         movie.genre ="action";
         movie.releasedOn = new Date();
         movie.rating = 9;
-
         given(movieRepositorytest.findById(id)).willReturn(Optional.of(movie));
+
+        //when
+        undertest.DeleteMovie(id);
+
+
 
 
        verify(movieRepositorytest,atLeastOnce()).delete(movie);

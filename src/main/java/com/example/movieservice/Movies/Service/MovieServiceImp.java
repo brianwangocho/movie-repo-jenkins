@@ -27,6 +27,13 @@ public class MovieServiceImp implements MovieServiceInterface {
 
     @Override
     public void UpdateMovie(Movie movie) {
+        Boolean isMoviePresent = movieRepository.findById(movie.id).isPresent();
+        if(!isMoviePresent){
+            throw new NullPointerException("Movie doesnt exist");
+        }
+        else{
+            movieRepository.save(movie);
+        }
 
     }
 
@@ -43,8 +50,4 @@ public class MovieServiceImp implements MovieServiceInterface {
 
     }
 
-    @Override
-    public String getMovieByName(String name) {
-        return null;
-    }
 }

@@ -10,5 +10,5 @@ public interface MovieServiceInterface {
 
     void DeleteMovie(int id);
 
-    String  getMovieByName(String name);
+
 }
