@@ -17,7 +17,7 @@ public class MovieServiceImp implements MovieServiceInterface {
     @Override
     public void AddMovie(Movie movie) {
         Boolean isMoviePresent = movieRepository.findByName(movie.name).isPresent();
-        if(!isMoviePresent){
+        if(isMoviePresent){
             throw new BadRequestException("Movie "+movie.name+" already exists");
         }else{
             movieRepository.save(movie);

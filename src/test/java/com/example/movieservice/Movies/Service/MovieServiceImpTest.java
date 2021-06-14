@@ -78,6 +78,8 @@ class MovieServiceImpTest {
         movie.releasedOn = new Date();
         movie.rating = 9;
 
+
+
     given(movieRepositorytest.findByName(movie.name)).willReturn(Optional.of(movie));
 
         //when
@@ -87,7 +89,7 @@ class MovieServiceImpTest {
                 .hasMessageContaining("Movie "+movie.name+" already exists");
 
 
-        verify(movieRepositorytest,never()).save(any());
+
 
 
     }
